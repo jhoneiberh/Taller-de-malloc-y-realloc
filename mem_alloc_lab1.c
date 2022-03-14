@@ -21,7 +21,7 @@ int main()
    edades = (int *) malloc(tam_inicial * sizeof(int));
 
 
-   edades_reasignar = (int *) malloc(0 * sizeof(int));
+   //edades_reasignar = (int *) malloc(0 * sizeof(int));
 
      
    int sel = RESERVAR_MAS;
@@ -54,7 +54,9 @@ int main()
       }
 
 
-      // reasignacion de memoria
+      /*
+      Reasignacion de memoria
+      */
       do
       {
          printf("\nDesea reservar más espacio?");
@@ -68,9 +70,10 @@ int main()
          }
 
          // Reasignacion de memoria
-         //edades_reasignar = realloc(edades, incremento);
-         
-         edades = realloc(edades, incremento); 
+         edades_reasignar = (int *) malloc(incremento * sizeof(int));
+         edades = edades_reasignar;
+
+         //edades = realloc(edades, incremento); 
 
          /* if(edades_reasignar)
          {
@@ -92,7 +95,7 @@ int main()
                edades[i] = i * 2;
             }
 
-
+            // Imprimiendo valores
             printf("\tLos nuevos numeros del arreglo son: \n");
             for(int i = 0; i < incremento; i++)
             {
