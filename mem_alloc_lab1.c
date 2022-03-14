@@ -3,47 +3,106 @@
 
 #define RESERVAR_MAS 1
 
-
 int main()
 {
-   // profe: int*  int_dyn_arr;
    //declaración de un el arreglo dinámico de enteros:
-   int *edades = NULL;
+   int *edades;
+
+   int *edades_reasignar;
    
    int tam_inicial = 5; //tamaño inicial
-   int incremento;
+   int incremento = 0;
 
-   
    
    //incremento de memoria (entero):
-   int entrada_numero;
    
 
-   
-   
    //reserve un espacio en memoria inicial para 5 enteros:
    edades = (int *) malloc(tam_inicial * sizeof(int));
 
 
+   edades_reasignar = (int *) malloc(0 * sizeof(int));
+
      
    int sel = RESERVAR_MAS;
    int aumento_reserva = 0;
-   do
+
+   /**
+   Codigo completo
+   **/
+   if(edades == NULL)
    {
+      printf("Memoria no asignada\n");
+      exit(0);
+   }
+   else
+   {
+      printf("\tAsignacion de memoria exitosa\n");
+
+      // Asignacion base de 5 elementos
+      for(int i = 0; i < tam_inicial; i++)
+      {
+         edades[i] = i * 2;
+      }
+
+
+      // Imprimiendo valores del arreglo
+      printf("\tLos numeros del arreglo son: \n");
+      for(int i = 0; i < tam_inicial; i++)
+      {
+         printf("El numero: %i es %i\n", i, edades[i]);
+      }
+
+
+      // reasignacion de memoria
+      do
+      {
          printf("\nDesea reservar más espacio?");
-		   scanf("%d",&sel);
-		   if(sel == RESERVAR_MAS)
-		   {
-		      printf("\nCuantos elementos desea agregar?");
-			   scanf("%d", &incremento);
-		   }
-		   
-		   //reasignar memoria:
-		   //int_mem_block = realloc(int_mem_block, nuevoTamanio); 
+         scanf("%i",&sel);
+
+
+         if(sel == RESERVAR_MAS)
+         {
+            printf("\nCuantos elementos desea agregar?");
+            scanf("%i", &incremento);
+         }
+
+         // Reasignacion de memoria
+         //edades_reasignar = realloc(edades, incremento);
+         
          edades = realloc(edades, incremento); 
-		   
-   
-   }while(sel == RESERVAR_MAS);
+
+         /* if(edades_reasignar)
+         {
+            edades = edades_reasignar;
+         } */
+
+         if(edades == NULL)
+         {
+            printf("\tNo se realizó la reasignacion de memoria\n");
+            exit(0);
+         }
+         else
+         {
+            printf("\tReasignacion de memoria exitosa\n");
+
+            // Asignacion de valores
+            for(int i = 0; i < incremento; i++)
+            {
+               edades[i] = i * 2;
+            }
+
+
+            printf("\tLos nuevos numeros del arreglo son: \n");
+            for(int i = 0; i < incremento; i++)
+            {
+               printf("El numero %i es: %i\n", i, edades[i]);
+            }
+
+         }
+
+      }while(sel == RESERVAR_MAS);
+   }
 
    return 0;
 
