@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #define RESERVAR_MAS 1
 
@@ -7,6 +8,7 @@ int main()
 {
    //declaración de un el arreglo dinámico de enteros:
    int *edades;
+
    
    int tam_inicial = 5; //tamaño inicial
    int incremento = 0;
@@ -34,10 +36,12 @@ int main()
       printf("\tAsignacion de memoria exitosa\n");
 
       // Asignacion base de 5 elementos
-      for(int i = 0; i < tam_inicial; i++)
+      int memset(edades, 10, tam_inicial);
+
+      /* for(int i = 0; i < tam_inicial; i++)
       {
          edades[i] = i * 2;
-      }
+      } */
 
 
       // Imprimiendo valores del arreglo
@@ -77,10 +81,14 @@ int main()
             printf("\tReasignacion de memoria exitosa\n");
 
             // Asignacion de valores
-            for(int i = 0; i < incremento; i++)
+            int memset(edades, 1, incremento);
+
+            /* for(int i = 0; i < incremento; i++)
             {
                edades[i] = i * 2;
-            }
+            } */
+            
+            
 
             // Imprimiendo valores
             printf("\tLos nuevos numeros del arreglo son: \n");
