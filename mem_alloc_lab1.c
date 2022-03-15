@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include<wchar.h>
 
 #define RESERVAR_MAS 1
 
@@ -33,6 +34,22 @@ int main()
    {
       printf("\tAsignacion de memoria exitosa\n");
 
+      // Asignacion base de 5 elementos
+      wmemset(edades, 10, tam_inicial);
+      /* for(int i = 0; i < tam_inicial; i++)
+      {
+         edades[i] = i * 2;
+      } */
+
+
+      // Imprimiendo valores del arreglo
+      printf("\tLos numeros del arreglo son: \n");
+      for(int i = 0; i < tam_inicial; i++)
+      {
+         printf("El numero: %i es %i\n", i, edades[i]);
+      }
+
+
       /*
       Reasignacion de memoria
       */
@@ -64,6 +81,21 @@ int main()
          else
          {
             printf("\tReasignacion de memoria exitosa\n");
+
+            // Asignacion de valores
+            wmemset(edades, 1, incremento);
+            /* for(int i = 0; i < incremento; i++)
+            {
+               edades[i] = i * 2;
+            } */
+
+            // Imprimiendo valores
+            printf("\tLos nuevos numeros del arreglo son: \n");
+            for(int i = 0; i < incremento; i++)
+            {
+               printf("El numero %i es: %i\n", i, edades[i]);
+            }
+
          }
 
       }while(sel == RESERVAR_MAS);
