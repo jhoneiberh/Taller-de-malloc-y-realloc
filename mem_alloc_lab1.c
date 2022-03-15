@@ -7,8 +7,6 @@ int main()
 {
    //declaración de un el arreglo dinámico de enteros:
    int *edades;
-
-   int *edades_reasignar;
    
    int tam_inicial = 5; //tamaño inicial
    int incremento = 0;
@@ -19,10 +17,6 @@ int main()
 
    //reserve un espacio en memoria inicial para 5 enteros:
    edades = (int *) malloc(tam_inicial * sizeof(int));
-
-
-   //edades_reasignar = (int *) malloc(0 * sizeof(int));
-
      
    int sel = RESERVAR_MAS;
    int aumento_reserva = 0;
@@ -69,16 +63,9 @@ int main()
             scanf("%i", &incremento);
          }
 
-         // Reasignacion de memoria
-         edades_reasignar = (int *) malloc(incremento * sizeof(int));
-         edades = edades_reasignar;
-
-         //edades = realloc(edades, incremento); 
-
-         /* if(edades_reasignar)
-         {
-            edades = edades_reasignar;
-         } */
+         // Reasignacion de memoria         
+         edades = realloc(edades, incremento * sizeof(int));
+         
 
          if(edades == NULL)
          {
